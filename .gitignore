@@ -1,6 +1,6 @@
 __pycache__/
 
-babylm_dataset/
+babylm_dataset/*.zip
 *.pyc
 
 checkpoints/
