@@ -34,7 +34,7 @@ def main():
     else:
         word_indices, vocab_ps = get_distribution(args.vocab_distribution, args.vocab_size)
         match_index = {word_i: word_i for word_i in word_indices}
-    import IPython; IPython.embed()
+    # import IPython; IPython.embed()
 
     for split in ["valid", "train", "test"]:
         output_filename = os.path.join(output_dir, f"{split}.txt")
