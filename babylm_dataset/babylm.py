@@ -13,6 +13,7 @@ Instructions about what this type of script is are here https://huggingface.co/d
 
 import os
 import datasets
+import zipfile
 
 _DESCRIPTION = """\
     BabyLM Dataset.
@@ -40,6 +41,7 @@ class BabyLM(datasets.GeneratorBasedBuilder):
     BUILDER_CONFIGS = [
         BabyLMConfig(
             description="BabyLM Data.",
+            data_dir = _DATA_DIR
         ),
         
         ]
@@ -65,7 +67,7 @@ class BabyLM(datasets.GeneratorBasedBuilder):
         return [
             datasets.SplitGenerator(
                 name=datasets.Split.TRAIN,
-                gen_kwargs={"data_file": os.path.join(self.config.data_dir, "train.zip"), "split": "train"},
+                gen_kwargs={"data_file": os.path.join(self.config.data_dir, "train_100M.zip"), "split": "train"},
             ),
             datasets.SplitGenerator(
                 name=datasets.Split.TEST,
@@ -73,15 +75,15 @@ class BabyLM(datasets.GeneratorBasedBuilder):
             ),
             datasets.SplitGenerator(
                 name=datasets.Split.VALIDATION,
-                gen_kwargs={"data_file": os.path.join(self.config.data_dir, "valid.zip"), "split": "valid"},
+                gen_kwargs={"data_file": os.path.join(self.config.data_dir, "dev.zip"), "split": "valid"},
             )
         ]
 
     def _generate_examples(self, data_file, split):
-        with open(data_file, encoding="utf-8") as f:
-            for idx, row in enumerate(f):
-                row = row.strip()
-                if row:
-                    yield idx, {"text": row}
-                else:
-                    yield idx, {"text": ""}
+        with zipfile.ZipFile(data_file, "r") as zipf:
+            for name in zipf.namelist():
+                if not name.endswith(".train"):
+                    continue
+                with zipf.open(name) as f:
+                    for idx, line in enumerate(f):
+                        yield idx, {"text": line.decode("utf-8").strip()}
