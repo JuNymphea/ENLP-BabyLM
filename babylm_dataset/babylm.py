@@ -82,8 +82,6 @@ class BabyLM(datasets.GeneratorBasedBuilder):
     def _generate_examples(self, data_file, split):
         with zipfile.ZipFile(data_file, "r") as zipf:
             for name in zipf.namelist():
-                if not name.endswith(".train"):
-                    continue
                 with zipf.open(name) as f:
                     for idx, line in enumerate(f):
                         yield idx, {"text": line.decode("utf-8").strip()}

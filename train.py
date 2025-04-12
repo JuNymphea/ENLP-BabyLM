@@ -150,7 +150,6 @@ def train() -> OnlineBenchmarkTrainer:
                 api_key_path=quinfig.wandb_api_key_path,
             ),
         )
-
     trainer = OnlineBenchmarkTrainer(
         model=model,
         args=training_args,
