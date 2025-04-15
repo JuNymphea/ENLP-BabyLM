@@ -7,5 +7,9 @@ checkpoints/
 
 synthetic_corpora/data
 
-/wandb
+wandb/
+
+constituency/
+
+
 
