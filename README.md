@@ -25,6 +25,12 @@ cd synthetic_corpora/corpus_creation_scripts/nested_parens
 python nested_parens.py --open-prob 0.49 --vocab-size 500 --vocab-distribution uniform
 ```
 
+Code to generate constituency data and dependency data is in 
+
+```bash
+cd synthetic_corpora/human_data
+```
+
 ### Run Pretraining
 
 Launch pretraining with `torchrun`:
@@ -58,3 +64,13 @@ Run:
 ```bash
 python finetune.py --config-file conf/sample.yaml
 ```
+
+## Evaluation
+
+Using perplexity
+```
+python eval.py --config-file conf/eval.yaml --model-name finetune-nested-parens0.49_vocab500-uniform_seed8 --checkpoint-number 1500 
+```
+
+and [BabyLM Evaluation Pipeline](https://github.com/babylm/evaluation-pipeline-2024?tab=readme-ov-file)
+
