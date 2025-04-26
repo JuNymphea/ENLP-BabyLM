@@ -68,7 +68,7 @@ markers = {
 }
 
 
-plt.figure(figsize=(7, 5))  # 7x5，不再太宽！
+plt.figure(figsize=(7, 5)) 
 
 for model in df_long["model"].unique():
     sub = df_long[df_long["model"] == model]

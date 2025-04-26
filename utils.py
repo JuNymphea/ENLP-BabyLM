@@ -4,6 +4,14 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import make_interp_spline
 from scipy.ndimage import gaussian_filter1d
 
+custom_colors = {
+        "random": "#FFB6C1",
+        "mixed": "#D2B48C",
+        "nested": "#D8BFD8",
+        "constituency": "#ADD8E6",
+        "dependency": "#90EE90"
+    }
+
 def depth_distribution(data, output_name, title):
     plt.figure(figsize=(12, 6))
     colors = plt.get_cmap("tab10")
@@ -19,15 +27,14 @@ def depth_distribution(data, output_name, title):
         y = [data[str(k)] for k in x]
 
         y_total = sum(y)
-        print(sum(y))
         y = [v / y_total for v in y]
 
         x_new = np.linspace(min(x), max(x), 500)
         spl = make_interp_spline(x, y, k=3)
         y_smooth = spl(x_new)
         y_smoothed = gaussian_filter1d(y_smooth, sigma=3)
-
-        plt.plot(x_new, y_smoothed, label=label, color=colors(idx))
+        
+        plt.plot(x_new, y_smoothed, label=label)
         plt.fill_between(x_new, y_smoothed, alpha=0.2)
 
     # plt.title(title)
@@ -169,32 +176,32 @@ with open('features/mixed.json', 'r') as file:
 with open('features/dependency.json', 'r') as file:
     dependency = json.load(file)
 
-# depth = {
-#     "nested": nested['depth'],
-#     "constituency": constituency['depth'],
-#     "mixed": mixed['depth'],
-#     "dependency": dependency['depth']
-# }
+depth = {
+    "nested": nested['depth'],
+    "constituency": constituency['depth'],
+    "mixed": mixed['depth'],
+    "dependency": dependency['depth']
+}
 
-# depth_distribution(depth, "imgs/depth.png", "Depth")
+depth_distribution(depth, "imgs/depth.png", "Depth")
 
-# leaves = {
-#     "nested": nested['leaves'],
-#     "constituency": constituency['leaves'],
-#     "mixed": mixed['leaves'],
-#     "dependency": dependency['leaves']
-# }
+leaves = {
+    "nested": nested['leaves'],
+    "constituency": constituency['leaves'],
+    "mixed": mixed['leaves'],
+    "dependency": dependency['leaves']
+}
 
-# leaves_distribution(leaves, "imgs/leaves.png", "Leaves")
+leaves_distribution(leaves, "imgs/leaves.png", "Leaves")
 
-# symmetry = {
-#     "nested": nested['symmetry'],
-#     "constituency": constituency['symmetry'],
-#     "mixed": mixed['symmetry'],
-#     "dependency": dependency['symmetry']
-# }
+symmetry = {
+    "nested": nested['symmetry'],
+    "constituency": constituency['symmetry'],
+    "mixed": mixed['symmetry'],
+    "dependency": dependency['symmetry']
+}
 
-# symmetry_distribution(symmetry, "imgs/symmetry.png", "Symmetry")
+symmetry_distribution(symmetry, "imgs/symmetry.png", "Symmetry")
 
 branching = {
     "nested": nested['branching']['avg'],
