@@ -19,8 +19,8 @@ def depth_distribution(data, output_name, title):
     plt.rcParams['font.family'] = 'Times New Roman'
     plt.rcParams['axes.titlesize'] = 18
     plt.rcParams['axes.labelsize'] = 14
-    plt.rcParams['xtick.labelsize'] = 12
-    plt.rcParams['ytick.labelsize'] = 12
+    plt.rcParams['xtick.labelsize'] = 22
+    plt.rcParams['ytick.labelsize'] = 22
 
     for idx, (label, data) in enumerate(data.items()):
         x = sorted(map(int, data.keys()))
@@ -38,14 +38,14 @@ def depth_distribution(data, output_name, title):
         plt.fill_between(x_new, y_smoothed, alpha=0.2)
 
     # plt.title(title)
-    plt.xlabel(title)
-    plt.ylabel('Percentage')
+    plt.xlabel(title, fontsize=22)
+    plt.ylabel('Percentage', fontsize=22)
     plt.xlim(0, 40) 
     plt.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)
     ax = plt.gca()
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.1), ncol=4, frameon=False)
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2), ncol=4, frameon=False, borderaxespad=0.5)
     plt.tight_layout()
     plt.savefig(output_name)
 
@@ -56,8 +56,8 @@ def leaves_distribution(data, output_name, title):
     plt.rcParams['font.family'] = 'Times New Roman'
     plt.rcParams['axes.titlesize'] = 18
     plt.rcParams['axes.labelsize'] = 14
-    plt.rcParams['xtick.labelsize'] = 12
-    plt.rcParams['ytick.labelsize'] = 12
+    plt.rcParams['xtick.labelsize'] = 22
+    plt.rcParams['ytick.labelsize'] = 22
 
     for idx, (label, data) in enumerate(data.items()):
         x = sorted(map(int, data.keys()))
@@ -76,14 +76,14 @@ def leaves_distribution(data, output_name, title):
         plt.fill_between(x_new, y_smoothed, alpha=0.2)
 
     # plt.title(title)
-    plt.xlabel(title)
-    plt.ylabel('Percentage')
+    plt.xlabel(title, fontsize=22)
+    plt.ylabel('Percentage', fontsize=22)
     plt.xlim(0, 200) 
     plt.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)
     ax = plt.gca()
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.1), ncol=4, frameon=False)
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2), ncol=4, frameon=False, borderaxespad=0.5)
     plt.tight_layout()
     plt.savefig(output_name)
 
@@ -94,8 +94,8 @@ def symmetry_distribution(data, output_name, title):
     plt.rcParams['font.family'] = 'Times New Roman'
     plt.rcParams['axes.titlesize'] = 18
     plt.rcParams['axes.labelsize'] = 14
-    plt.rcParams['xtick.labelsize'] = 12
-    plt.rcParams['ytick.labelsize'] = 12
+    plt.rcParams['xtick.labelsize'] = 22
+    plt.rcParams['ytick.labelsize'] = 22
 
     for idx, (label, data) in enumerate(data.items()):
         x = sorted(map(float, data.keys()))
@@ -114,14 +114,14 @@ def symmetry_distribution(data, output_name, title):
         plt.fill_between(x_new, y_smoothed, alpha=0.2)
 
     # plt.title(title)
-    plt.xlabel(title)
-    plt.ylabel('Percentage')
+    plt.xlabel(title, fontsize=22)
+    plt.ylabel('Percentage', fontsize=22)
     # plt.xlim(0, 15) 
     plt.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)
     ax = plt.gca()
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.1), ncol=4, frameon=False)
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2), ncol=4, frameon=False, borderaxespad=0.5)
     plt.tight_layout()
     plt.savefig(output_name)
 
@@ -132,8 +132,8 @@ def branch_distribution(data, output_name, title):
     plt.rcParams['font.family'] = 'Times New Roman'
     plt.rcParams['axes.titlesize'] = 18
     plt.rcParams['axes.labelsize'] = 14
-    plt.rcParams['xtick.labelsize'] = 12
-    plt.rcParams['ytick.labelsize'] = 12
+    plt.rcParams['xtick.labelsize'] = 22
+    plt.rcParams['ytick.labelsize'] = 22
 
     for idx, (label, data) in enumerate(data.items()):
         x = sorted(map(float, data.keys()))
@@ -153,14 +153,14 @@ def branch_distribution(data, output_name, title):
         plt.fill_between(x_new, y_smoothed, alpha=0.2)
 
     # plt.title(title)
-    plt.xlabel(title)
-    plt.ylabel('Percentage')
+    plt.xlabel(title, fontsize=22)
+    plt.ylabel('Percentage', fontsize=22)
     plt.xlim(1, 6) 
     plt.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)
     ax = plt.gca()
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.1), ncol=4, frameon=False)
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2), ncol=4, frameon=False, borderaxespad=0.5)
     plt.tight_layout()
     plt.savefig(output_name)
 
