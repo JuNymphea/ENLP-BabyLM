@@ -155,7 +155,7 @@ def branch_distribution(data, output_name, title):
     # plt.title(title)
     plt.xlabel(title)
     plt.ylabel('Percentage')
-    plt.xlim(0, 15) 
+    plt.xlim(1, 15) 
     plt.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)
     ax = plt.gca()
     ax.spines['top'].set_visible(False)
